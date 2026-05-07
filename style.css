@@ -1,0 +1,181 @@
+/* WARNA UTAMA TEMA PINK & CREAM */
+:root {
+    --pink-primary: #FFB7C5;
+    --pink-soft: #FFF0F3;
+    --pink-deep: #D81B60;
+    --cream: #FFFDF9;
+    --text-color: #4A1B24;
+    --gold: #D4AF37;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: #FCE4EC;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    color: var(--text-color);
+    /* cursor: none; Bisa diaktifkan jika ingin kursor panah asli hilang sepenuhnya */
+}
+
+/* =========================================
+   KURSOR LEGENDARY (Trailing Heart & Burst)
+========================================= */
+.trailing-heart {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10005;
+    color: var(--pink-primary); /* Warna pink tema kamu */
+    opacity: 1;
+    animation: heartFadeDrift 1s ease-out forwards;
+}
+
+@keyframes heartFadeDrift {
+    0% { transform: scale(1) translateY(0); opacity: 1; }
+    100% { transform: scale(1.5) translateY(-50px); opacity: 0; }
+}
+
+.burst-particle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10006;
+    animation: particleBurst 0.8s ease-out forwards;
+}
+
+@keyframes particleBurst {
+    0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(0) rotate(180deg); opacity: 0; }
+}
+
+/* KUNCI PIN */
+#pin-gate {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #4A1B24; z-index: 10000;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: white; transition: 0.8s;
+}
+.icon-love { font-size: 60px; color: var(--pink-primary); margin-bottom: 15px; }
+.pin-input {
+    background: transparent; border: none; border-bottom: 3px solid var(--pink-primary);
+    color: white; font-size: 40px; text-align: center; width: 150px;
+    margin: 20px 0; outline: none; letter-spacing: 10px; font-family: 'Montserrat';
+}
+
+/* ANIMASI DAUN JATUH */
+.leaf-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 999;
+}
+.leaf {
+    position: absolute; background: var(--pink-primary);
+    width: 15px; height: 15px; border-radius: 50% 0 50% 0;
+    opacity: 0.6; animation: fall linear infinite;
+}
+@keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+/* SIDEBAR NAVIGASI */
+.sidebar {
+    position: fixed; left: 0; top: 0; height: 100%; width: 90px;
+    background: white; display: none; flex-direction: column;
+    align-items: center; padding-top: 20px;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.05); z-index: 1000;
+}
+.nav-item {
+    margin-bottom: 25px; text-align: center; color: var(--pink-primary);
+    cursor: pointer; transition: 0.3s;
+}
+.nav-item i { font-size: 20px; margin-bottom: 5px; }
+.nav-item p { font-size: 10px; font-weight: 600; }
+.nav-item:hover, .active-nav { color: var(--pink-deep); transform: scale(1.1); }
+
+/* MAIN CONTENT */
+.main-wrapper {
+    margin-left: 90px;
+    padding: 20px;
+    display: none;
+}
+.page-section { display: none; animation: fadeIn 0.5s; }
+.active-page { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.section {
+    background: var(--cream); margin: 20px auto; padding: 40px;
+    border-radius: 20px; box-shadow: 0 15px 30px rgba(216, 27, 96, 0.08); max-width: 900px;
+}
+.title {
+    font-family: 'Playfair Display', serif; font-size: 32px;
+    margin-bottom: 20px; color: var(--pink-deep);
+    border-left: 5px solid var(--pink-primary); padding-left: 15px;
+}
+.center-content { display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+video, canvas {
+    width: 100%; max-width: 600px; border-radius: 15px;
+    border: 6px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.1); margin: 20px 0;
+}
+
+/* FOTO */
+.photo-grid-6 {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; width: 100%; max-width: 800px;
+}
+.photo-grid-6 img {
+    width: 100%; height: 200px; object-fit: cover;
+    border-radius: 15px; border: 4px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s;
+}
+.photo-grid-6 img:hover { transform: scale(1.05); }
+
+.content-split { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+.split-text p { font-size: 16px; line-height: 1.8; }
+.split-image img { width: 100%; height: auto; border-radius: 15px; border: 6px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+/* TOMBOL & KUIS */
+.btn {
+    background: var(--pink-primary); color: white; border: none;
+    padding: 12px 30px; border-radius: 50px; cursor: pointer;
+    font-weight: bold; font-family: 'Montserrat'; transition: 0.3s; font-size: 16px;
+}
+.btn:hover { background: var(--pink-deep); transform: scale(1.05); }
+
+.quiz-btn {
+    display: block; width: 100%; text-align: left;
+    background: white; border: 2px solid var(--pink-primary);
+    color: var(--text-color); padding: 15px 20px; border-radius: 10px;
+    margin: 10px 0; cursor: pointer; font-size: 16px; font-family: 'Montserrat';
+    transition: 0.3s;
+}
+.quiz-btn:hover { background: var(--pink-primary); color: white; transform: translateX(10px); }
+
+/* VOUCHER STYLING */
+.voucher-container { display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 600px; }
+.voucher-card {
+    display: flex; align-items: center; background: var(--pink-soft); text-align: left;
+    padding: 20px; border-radius: 15px; border: 2px dashed var(--gold);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer;
+}
+.voucher-card:hover { transform: scale(1.03); background: var(--pink-primary); color: white; box-shadow: 0 10px 25px rgba(216, 27, 96, 0.3); }
+.voucher-icon { font-size: 40px; margin-right: 20px; }
+.voucher-text h3 { margin-bottom: 5px; color: var(--pink-deep); transition: 0.3s; }
+.voucher-card:hover .voucher-text h3 { color: white; }
+
+/* MISC */
+.timer-text { font-size: 32px; color: var(--pink-deep); margin: 15px 0; }
+.easter-trigger { margin-top: 30px; cursor: pointer; }
+.icon-flower { font-size: 50px; color: var(--pink-primary); }
+
+#secret-overlay {
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 350px; height: 350px; border-radius: 50%; border: 8px solid gold;
+    overflow: hidden; display: none; z-index: 10001; box-shadow: 0 0 50px rgba(0,0,0,0.5);
+}
+#secret-overlay video { width: 100%; height: 100%; object-fit: cover; border: none; }
+.close-btn {
+    position: absolute; top: 15px; right: 15px; background: var(--pink-deep);
+    color: white; border: none; width: 35px; height: 35px; border-radius: 50%;
+    font-size: 18px; cursor: pointer; z-index: 10002; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: 0.3s;
+}
+.close-btn:hover { background: red; transform: scale(1.1); }

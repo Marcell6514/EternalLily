@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Eternal Lily 🌸</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="custom-cursor" id="cursor"></div>
+
+    <div class="leaf-container" id="leaf-box"></div>
+
+    <div id="pin-gate">
+        <i class="fa-solid fa-heart icon-love"></i>
+        <h2>Bibuu's Private Garden</h2>
+        <input type="password" id="pin-entry" class="pin-input" maxlength="4" placeholder="••••">
+        <p>Masukkan PIN</p>
+    </div>
+
+    <div id="secret-overlay">
+        <button id="close-secret" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+        <video id="easter-vid" src="assets/secret-video.mp4" controls></video>
+    </div>
+
+    <audio id="bg-music" src="assets/about-you.mp3" loop></audio>
+
+    <div class="sidebar" id="nav-bar">
+        <div class="nav-item active-nav" onclick="changePage('home')" title="Home"><i class="fa-solid fa-house"></i><p>Home</p></div>
+        <div class="nav-item" onclick="changePage('story')" title="Our Story"><i class="fa-solid fa-images"></i><p>Story</p></div>
+        <div class="nav-item" onclick="changePage('about')" title="About Us"><i class="fa-solid fa-heart"></i><p>About</p></div>
+        <div class="nav-item" onclick="changePage('quiz')" title="Quiz"><i class="fa-solid fa-puzzle-piece"></i><p>Quiz</p></div>
+        <div class="nav-item" onclick="changePage('hope')" title="Hope"><i class="fa-solid fa-star"></i><p>Hope</p></div>
+        <div class="nav-item" onclick="changePage('voucher')" title="Vouchers"><i class="fa-solid fa-ticket"></i><p>Voucher</p></div>
+        <div class="nav-item" onclick="changePage('message')" title="Messages"><i class="fa-solid fa-envelope"></i><p>Message</p></div>
+    </div>
+
+    <div class="main-wrapper" id="main-content">
+        
+        <div id="home" class="page-section active-page">
+            <div class="section center-content">
+                <h2 class="title">Welcome Home, Bibuu 🌸</h2>
+                <p>Dengerin ini terakhir yaaa, baca baca aja dulu ke halaman lain, ini lagu khusus buat kamu. Maaf kalau suaranya jelek, tapi tapi ini bukan bagian terpenting!</p>
+<audio id="sing-vid" controls src="assets/my-singing.mp3" style="width: 100%; max-width: 400px; margin-top: 15px; outline: none; border-radius: 30px; box-shadow: 0 5px 15px rgba(216, 27, 96, 0.2);"></audio>
+                
+                <div id="lily-icon" class="easter-trigger">
+                    <i class="fa-solid fa-spa icon-flower"></i>
+                    <p>(carilah treasure pada halaman ini dengan klik 3x)</p>
+                </div>
+            </div>
+            
+            <div class="section center-content">
+                <h2 class="title">Our Time Together</h2>
+                <p>Kita sudah bersama sejak 26 April 2026:</p>
+                <h1 id="timer" class="timer-text">0 Hari 0 Jam 0 Menit</h1>
+            </div>
+
+            <div class="section center-content">
+                <h2 class="title">Catch the Lily Game</h2>
+                <p>Skor: <span id="score">0</span></p>
+                <canvas id="game-canvas" height="300"></canvas>
+                <br>
+                <button class="btn" onclick="startGame()">Mulai Game</button>
+            </div>
+        </div>
+
+        <div id="story" class="page-section">
+            <div class="section center-content">
+                <h2 class="title">Our Story</h2>
+                <p style="margin-bottom: 20px;">Jejak langkah kita, terekam dalam kenangan yang takkan pernah pudar.</p>
+                <div class="photo-grid-6">
+                    <img src="assets/photo1.jpg" alt="Story 1">
+                    <img src="assets/photo2.jpg" alt="Story 2">
+                    <img src="assets/photo3.jpg" alt="Story 3">
+                    <img src="assets/photo4.jpg" alt="Story 4">
+                    <img src="assets/photo5.jpg" alt="Story 5">
+                    <img src="assets/photo6.jpg" alt="Story 6">
+                </div>
+            </div>
+        </div>
+
+        <div id="about" class="page-section">
+            <div class="section content-split">
+                <div class="split-text">
+                    <h2 class="title">About Us</h2>
+                    <p>Kita adalah dua jiwa yang menemukan rumah pada satu sama lain. Kamu bukan sekadar pelengkap hariku, tapi kamu adalah alasan di balik senyumku yang paling tulus.</p>
+                    <p><br>Di matamu, aku melihat masa depan yang tenang. Di genggaman tanganmu, aku merasakan hangatnya dunia yang selama ini kucari. Kita mungkin tidak sempurna, tapi bersama-sama, kita membangun dunia kecil yang sempurna versi kita sendiri.</p>
+                </div>
+                <div class="split-image">
+                    <img src="assets/about-photo.jpg" alt="About Us">
+                </div>
+            </div>
+        </div>
+
+        <div id="quiz" class="page-section">
+            <div class="section center-content">
+                <h2 class="title">How Well Do You Know Us?</h2>
+                <div id="quiz-container" style="max-width: 600px; width: 100%;">
+                    
+                    <div id="quiz-1" class="quiz-box">
+                        <h3 style="margin-bottom: 20px; font-size: 20px;">1. Apa hal yang paling aku suka darimu?</h3>
+                        <button class="quiz-btn" onclick="checkQuiz(1, false)">Hanya suaramu.</button>
+                        <button class="quiz-btn" onclick="checkQuiz(1, true)">Semuanya, tanpa terkecuali.</button>
+                        <button class="quiz-btn" onclick="checkQuiz(1, false)">Hanya senyummu.</button>
+                    </div>
+
+                    <div id="quiz-2" class="quiz-box" style="display: none;">
+                        <h3 style="margin-bottom: 20px; font-size: 20px;">2. Tanggal berapa kita jadian?</h3>
+                        <button class="quiz-btn" onclick="checkQuiz(2, false)">25 April 2026</button>
+                        <button class="quiz-btn" onclick="checkQuiz(2, false)">27 April 2026</button>
+                        <button class="quiz-btn" onclick="checkQuiz(2, true)">26 April 2026</button>
+                    </div>
+
+                    <div id="quiz-3" class="quiz-box" style="display: none;">
+                        <h3 style="margin-bottom: 20px; font-size: 20px;">3. Siapa yang paling beruntung di hubungan ini?</h3>
+                        <button class="quiz-btn" onclick="checkQuiz(3, true)">Aku, karena memilikimu.</button>
+                        <button class="quiz-btn" onclick="checkQuiz(3, false)">Kamu.</button>
+                        <button class="quiz-btn" onclick="checkQuiz(3, false)">Tidak ada.</button>
+                    </div>
+
+                    <div id="quiz-success" style="display: none; text-align: center; margin-top: 20px;">
+                        <h2 style="color: var(--pink-deep); font-size: 30px;">Perfect! 💖</h2>
+                        <p>Kamu memang Lily-ku yang paling pintar dan pengertian. Cek menu voucher gih!</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="hope" class="page-section">
+            <div class="section center-content">
+                <h2 class="title">My Hopes for Us</h2>
+                <i class="fa-solid fa-star" style="font-size: 40px; color: gold; margin-bottom: 20px;"></i>
+                <p style="font-size: 20px; line-height: 1.8; max-width: 700px;">Harapanku sederhana, sayang. Aku ingin terus menggenggam tanganmu melewati ribuan hari esok. Aku ingin kita tetap saling menguatkan saat dunia terasa berat, dan saling merayakan sekecil apapun kebahagiaan yang kita capai. Semoga kelak, langkah kecil yang kita mulai ini bermuara pada satu akhir yang sama: hidup menua dan selalu bahagia berdua bersamamu.</p>
+            </div>
+        </div>
+
+        <div id="voucher" class="page-section">
+            <div class="section center-content">
+                <h2 class="title">Exclusive For Lily</h2>
+                <p style="margin-bottom: 30px;">Pilih vouchernya, konfirmasi, dan sistem akan langsung chat ke WA-ku! Bebas expired!</p>
+                <div class="voucher-container">
+                    
+                    <div class="voucher-card" onclick="claimVoucher('Photobooth Date')">
+                        <div class="voucher-icon">📸</div>
+                        <div class="voucher-text">
+                            <h3>Photobooth Date</h3>
+                            <p>Bebas pilih tempat, aku yang bayar dan temenin gayanya!</p>
+                        </div>
+                    </div>
+
+                    <div class="voucher-card" onclick="claimVoucher('Pelukan Hangat')">
+                        <div class="voucher-icon">🫂</div>
+                        <div class="voucher-text">
+                            <h3>Pelukan Hangat</h3>
+                            <p>Durasi: Tanpa Batas. Berlaku saat kamu sedih atau senang.</p>
+                        </div>
+                    </div>
+
+                    <div class="voucher-card" onclick="claimVoucher('Pottery Class Date')">
+                        <div class="voucher-icon">🏺</div>
+                        <div class="voucher-text">
+                            <h3>Pottery Class Date</h3>
+                            <p>Mari mengotori tangan bersama sambil bikin karya dari tanah liat!</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="message" class="page-section">
+            <div class="section center-content">
+                <h2 class="title">A Message From My Heart</h2>
+                <i class="fa-solid fa-envelope-open-text" style="font-size: 40px; color: var(--pink-primary); margin-bottom: 20px;"></i>
+                <div style="background: var(--pink-soft); padding: 30px; border-radius: 15px; border: 2px dashed var(--pink-deep); max-width: 700px;">
+                    <p style="font-size: 18px; line-height: 1.8;">Sayangku, Lily...<br><br>Pesan ini kutulis untuk berterima kasih. Terima kasih sudah mau menerima segala kurangku, mengerti duniaku, dan memilihku di antara banyaknya pilihan di luar sana. Terima kasih telah menjadikan aku tempatmu bersandar.</p>
+                    <p><br>Kehadiranmu adalah anugerah terindah. Jangan pernah merasa berjuang sendirian ya, karena sekarang ada aku di sini, selalu untukmu. Aku mencintaimu, lebih dari kata-kata yang bisa aku tulis di sini.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
